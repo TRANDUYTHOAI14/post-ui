@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Đồ Án Cuối Khóa</title>
+
+	<link rel="shortcut icon" href="images/favicon.png" type="image/png" />
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+	<!-- Font awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+		integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+
+	<!-- Use font Rubik -->
+	<link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet" />
+
+	<!-- Internal CSS -->
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/home.css" />
+</head>
+
+<body>
+	<!-- This is a template HTML for a post item -->
+	<template id="postItemTemplate">
+		<li class="col-12 col-md-6 col-lg-4">
+			<div id="postItem" class="post-item mb-4">
+				<div class="card">
+					<img id="postItemImage" src="images/recipe.jpg" class="card-img-top" alt="recipe" />
+
+					<div class="card-body">
+						<h5 id="postItemTitle" class="card-title">Card title</h5>
+
+						<p id="postItemDescription" class="card-text">
+							This is a wider card with supporting text below as a natural lead-in to additional
+							content. This content is a little bit longer.
+						</p>
+
+						<p class="card-text">
+							<small class="text-muted">by</small>
+							<small id="postItemAuthor" class="text-muted font-weight-bold">Hau Nguyen</small>
+							<small id="postItemTimeSpan" class="text-muted">- 3 mins ago</small>
+						</p>
+					</div>
+				</div>
+
+				<div class="post-item-menu">
+					<div id="postItemEdit" class="menu-item rounded-circle">
+						<i class="fas fa-pen"></i>
+					</div>
+					<div id="postItemRemove" class="menu-item rounded-circle">
+						<i class="fas fa-trash"></i>
+					</div>
+				</div>
+			</div>
+		</li>
+	</template>
+
+	<!-- window onload -->
+	<div class="loading">
+		<img src="images/loading.gif" alt="">
+	</div>
+
+	<header>
+		<!-- Navigation
+      - Please note that we use an empty item to make sure that we always have 3 flex-items
+        so logo is at centered, and the left and the right item can be optional by leaving it empty
+    -->
+		<nav class="top-nav shadow-sm py-3">
+			<div class="container">
+				<ul class="nav justify-content-between align-items-center">
+					<li class="nav-item">
+						<a class="nav-link" href="">
+							<img src="images/logo.svg" alt="Logo Nordic Coder" />
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="add-edit-post.html"><i class="fas fa-plus-circle mr-1"></i>Add new
+							post</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<section class="carousel-section">
+			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="d-block w-100" src="images/1.jpg" alt="First slide" />
+						<div class="carousel-caption d-none d-md-block">
+							<h5>Shirley Wiley
+							</h5>
+							<p>It took him a month to finish the meal.
+							</p>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" src="images/2.jpg" alt="Second slide" />
+						<div class="carousel-caption d-none d-md-block">
+							<h5>Anibal Curtis
+							</h5>
+							<p>She did not cheat on the test</p>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" src="images/3.jpg" alt="Third slide" />
+						<div class="carousel-caption d-none d-md-block">
+							<h5>Fay Fletcher
+							</h5>
+							<p>Not all people who wander are lost.</p>
+						</div>
+					</div>
+				</div>
+
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</section>
+
+		<section class="posts-section">
+			<div class="container">
+				<h1 class="with-underline text-center">Latest posts</h1>
+
+				<!-- Posts list -->
+				<ul id="postsList" class="row posts-list justify-content-center"></ul>
+
+				<!-- Posts pagination -->
+				<nav class="posts-nav" aria-label="Posts navigation">
+					<ul hidden id="postsPagination" class="pagination justify-content-center">
+						<li class="page-item">
+							<a class="page-link" href="#" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item">
+							<a class="page-link" href="#" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+	</main>
+
+	<footer class="text-center text-muted py-3">
+		<small>Created by Po with <i class="fas fa-heart"></i></small>
+	</footer>
+
+	<!-- axios -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<!-- Bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
+	<!-- Scripts should be placed here to prevent blocking render UI -->
+	<script src="vendor/anime.min.js"></script>
+	<script type="module" src="js/main.mjs"></script>
+</body>
+
+</html>
